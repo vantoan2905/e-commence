@@ -58,6 +58,8 @@ cover/
 
 archive/
 media/
+recomment_model/
+
 # Django stuff:
 *.log
 local_settings.py
@@ -77,6 +79,7 @@ docs/_build/
 # PyBuilder
 .pybuilder/
 target/
+
 
 # Jupyter Notebook
 .ipynb_checkpoints

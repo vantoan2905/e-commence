@@ -13,7 +13,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . /recomment_product/
 
-CMD ["sh", "-c", "python manage.py makemigrations && \
+CMD ["sh", "-c", "python manage.py makemigrations shop && \
                    python manage.py migrate && \
                    python manage.py load_data && \
                    python manage.py render_User && \
