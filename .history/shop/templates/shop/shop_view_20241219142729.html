@@ -94,41 +94,36 @@
 
 <nav>
     <div class="logo">
-        <a href="#">
-            <h1>Cow</h1>
-        </a>
+        <h1>Cow</h1>
     </div>
-
-    <div class="search-container">
-        <button 
-            onclick="handleButtonClick()" 
-            class="filter-btn">
-            <ion-icon name="color-filter-outline"></ion-icon>
-        </button>
-        <input 
-            type="text" 
-            placeholder="Search products..." 
-            class="search-box">
-        <input 
-            type="file" 
-            id="fileInput" 
-            accept=".png,.jpg" 
-            style="display: none;" 
-            onchange="handleFileUpload(event)">
-        <button 
-            onclick="document.getElementById('fileInput').click();" 
-            class="upload-btn"><ion-icon name="cloud-upload-outline"></ion-icon>
-        </button>
-    </div>
-
-    <ul class="button-select">
-        <li><a href="#">Pages</a><ion-icon name="copy-outline"></ion-icon></li>
-        <li><a href="#">Buy Theme</a><ion-icon name="planet-outline"></ion-icon></li>
-        <li><a href="#">My Account</a><ion-icon name="person-circle-outline"></ion-icon></li>
+    <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Pages</a></li>
+        <li><a href="#">Buy Theme</a></li>
+        <li><a href="#">My Account</a></li>
     </ul>
 </nav>
 
-
+<div class="search-container">
+    <input 
+        type="text" 
+        placeholder="Search products..." 
+        class="search-box">
+    <button 
+        onclick="handleButtonClick()" 
+        class="filter-btn">Filter
+    </button>
+    <input 
+        type="file" 
+        id="fileInput" 
+        accept=".png,.jpg" 
+        style="display: none;" 
+        onchange="handleFileUpload(event)">
+    <button 
+        onclick="document.getElementById('fileInput').click();" 
+        class="upload-btn">Upload File
+    </button>
+</div>
 
 <div class="product">
     <div class="product-container">
@@ -138,19 +133,15 @@
                 <img src="{{ product.image.url }}" alt="{{ product.productDisplayName }}">
                 <div class="product-details">
                     <h2>{{ product.productDisplayName }}</h2>
-                    <!-- <p>Article Number: {{ product.articleNumber }}</p> -->
-                    <!-- <p>Type: {{ product.articleType }}</p> -->
-                    <!-- <p>Category: {{ product.masterCategory }} > {{ product.subCategory }}</p> -->
-                    <!-- <p>Gender: {{ product.gender }}</p> -->
-                    <!-- <p>Colour: {{ product.baseColour }}</p> -->
-                    <!-- <p>Season: {{ product.season }} - Year: {{ product.year }}</p> -->
-                    <!-- <p>Usage: {{ product.usage }}</p> -->
+                    <p>Article Number: {{ product.articleNumber }}</p>
+                    <p>Type: {{ product.articleType }}</p>
+                    <p>Category: {{ product.masterCategory }} > {{ product.subCategory }}</p>
+                    <p>Gender: {{ product.gender }}</p>
+                    <p>Colour: {{ product.baseColour }}</p>
+                    <p>Season: {{ product.season }} - Year: {{ product.year }}</p>
+                    <p>Usage: {{ product.usage }}</p>
                     <div class="product-price">
                         <span class="price">${{ product.price }}</span>
-                        <div>
-                            <ion-icon name="cart-outline"></ion-icon>
-                        </div>
-                        
                         {% if product.on_sale %}
                         <span class="sale-tag">Sale</span>
                         {% endif %}
@@ -168,8 +159,6 @@
     <button class="prev-page">Previous</button>
     <button class="next-page">Next</button>
 </div>
-<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 
 </body>
 </html>

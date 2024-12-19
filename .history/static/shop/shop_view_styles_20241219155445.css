@@ -183,7 +183,7 @@ nav > .button-select > li:hover > ion-icon {
 .product > .product-container > .product-item {
     width: 20vw;
     height: 65vh;
-    background-color: rgba(0, 0, 0, 0.1);
+    background-color: red;
     border-radius: 0.5vw;
     box-shadow: 0 0 0 0.05vw black;
 }
@@ -193,9 +193,9 @@ nav > .button-select > li:hover > ion-icon {
     height: 75%;
     object-fit: cover;
     object-position: center;
-    /* border-radius: 0.5vw; */
-    border-top-left-radius: 0.5vw ;
-    border-top-right-radius: 0.5vw ;
+    border-radius-top-left: 0.5vw;
+    border-radius-top-right
+    : 0.5vw;
 }
 
 .product > .product-container > .product-item > .product-details {
