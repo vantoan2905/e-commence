@@ -143,14 +143,10 @@
                     <!-- <p>Category: {{ product.masterCategory }} > {{ product.subCategory }}</p> -->
                     <!-- <p>Gender: {{ product.gender }}</p> -->
                     <!-- <p>Colour: {{ product.baseColour }}</p> -->
-                    <!-- <p>Season: {{ product.season }} - Year: {{ product.year }}</p> -->
+                    <p>Season: {{ product.season }} - Year: {{ product.year }}</p>
                     <!-- <p>Usage: {{ product.usage }}</p> -->
                     <div class="product-price">
                         <span class="price">${{ product.price }}</span>
-                        <div>
-                            <ion-icon name="cart-outline"></ion-icon>
-                        </div>
-                        
                         {% if product.on_sale %}
                         <span class="sale-tag">Sale</span>
                         {% endif %}

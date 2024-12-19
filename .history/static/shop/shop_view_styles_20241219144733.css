@@ -1,0 +1,84 @@
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+* {
+  margin: 0;
+  padding: 0;
+  font: inherit;
+}
+img,
+picture,
+svg,
+video {
+  display: block;
+  max-width: 100%;
+}
+input,
+select,
+textarea {
+  background-color: transparent;
+  outline: none;
+}
+button {
+  cursor: pointer;
+  background-color: transparent;
+  outline: none;
+  border: 0;
+}
+body {
+  min-height: 100vh;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1;
+  font-family: "Montserrat", serif;
+}
+
+:root {
+    --primary-color: #2C00D5;
+    --secondary-color: #000000;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+/* Header */
+
+nav {
+    width: 100%;
+    height: 12vh;
+    background-color: red;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    padding: 0 0.5vw;
+}
+
+nav > .logo {
+    margin-left: -7vw;
+    margin-right: -15vw;
+}
+
+nav > .logo > a {
+    text-decoration: none;
+    color: var(--secondary-color);
+}
+
+nav > .logo > a > h1 {
+    font-size: 2vw;
+    font-weight: bold;
+}
+nav > .search-container {
+}
+
+nav > .search-container > input[type="text"] {
+    border: none;
+    background-color: rgba(44, 0, 213, 0.3);
+    height: 5vh;
+    width: 15vw;
+    padding-left: 1.2vw;
+    font-size: 1vw;
+    color: var(--primary-color);
+    border-radius: 0.5vw;
+}

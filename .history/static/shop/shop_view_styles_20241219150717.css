@@ -1,0 +1,114 @@
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+* {
+  margin: 0;
+  padding: 0;
+  font: inherit;
+}
+img,
+picture,
+svg,
+video {
+  display: block;
+  max-width: 100%;
+}
+input,
+select,
+textarea {
+  background-color: transparent;
+  outline: none;
+}
+button {
+  cursor: pointer;
+  background-color: transparent;
+  outline: none;
+  border: 0;
+}
+body {
+  min-height: 100vh;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1;
+  font-family: "Montserrat", serif;
+}
+
+:root {
+    --primary-color: #2C00D5;
+    --secondary-color: #000000;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+/* Header */
+
+nav {
+    width: 100%;
+    height: 12vh;
+    /* background-color: red; */
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    padding: 0 0.5vw;
+    border-bottom: 0.05vw solid rgba(44, 0, 213, 0.15);
+}
+
+nav > .logo {
+    margin-left: -7vw;
+    margin-right: -15vw;
+}
+
+nav > .logo > a {
+    text-decoration: none;
+    color: var(--secondary-color);
+}
+
+nav > .logo > a > h1 {
+    font-size: 2vw;
+    font-weight: bold;
+}
+nav > .search-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+}
+
+nav > .search-container > input[type="text"] {
+    border: none;
+    background-color: white !important;
+    height: 5vh;
+    width: 15vw;
+    padding-left: 1.2vw;
+    font-size: 0.95vw;
+    color: gray;
+    border-radius: 0.5vw;
+    transition: all 0.5s;
+    box-shadow: 0 0 0 0.05vw rgba(0, 0, 0, 0.05);
+}
+
+nav > .search-container > input[type="text"]:focus {
+    outline: none;
+    /* box-shadow: 0 0 0 0.05vw var(--secondary-color); */
+    color: black !important;
+}
+
+nav > .search-container > button {
+    background-color: white;
+    height: 5vh;
+    width: 7vh;
+    font-size: 1.5vw;
+    color: black !important;
+    margin-left: 2vw;
+    transition: all 0.5s;
+    margin-right: 0.5vw;
+}
+
+nav > .search-container > button:hover {
+    background-color: var(--primary-color);
+    color: white !important;
+    border-radius: 0.2vw;
+}
