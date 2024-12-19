@@ -20,6 +20,7 @@ urlpatterns = [
     path('my-account/', views.my_account, name='my_account'),
     path('logout/', views.logout_view, name='logout'),
     path('login/', login_view, name='login'),
+    path('upload-file/', views.upload_file, name='upload_file'),
 
 ]
 
