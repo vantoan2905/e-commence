@@ -58,7 +58,7 @@ def login_view(request):
             print ("Login successful for user:", user.username)
             return render(request, 'shop/shop_view.html', {'products': products})
         messages.error(request, "Invalid username or password.")
-    return render(request, 'shop/login.html')
+    return render(request, 'shop/login_view.html')
 
 
 
