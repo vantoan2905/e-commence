@@ -40,7 +40,7 @@ This project is a Django-based application designed for managing and recommendin
 
 1. **Clone the Repository**
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/vantoan2905/recommend_product.git
    cd recommend_product
    ```
 
