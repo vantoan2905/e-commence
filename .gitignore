@@ -59,6 +59,8 @@ cover/
 archive/
 media/
 recomment_model/
+data/
+models/
 
 # Django stuff:
 *.log

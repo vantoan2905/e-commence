@@ -11,6 +11,6 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "recomment_product.settings")
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "recommend_product.settings")
 
 application = get_wsgi_application()

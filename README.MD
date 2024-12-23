@@ -1,11 +1,12 @@
 # Django Project README
+![Image](image.png)
 
 ## Project Overview
 This project is a Django-based application designed for managing and recommending products on an e-commerce website. It includes functionality for storing and processing search and product selection history, managing media files, and utilizing a recommendation model.
 
 ## Directory Structure
 ```
-(django_recommend_system) D:\recommend_product\recommend_product\shop>
+(django_recommend_system) /recommend_product/shop>
 ├── admin.py
 ├── apps.py
 ├── models.py
@@ -22,7 +23,7 @@ This project is a Django-based application designed for managing and recommendin
 └── __pycache__
 ```
 
-### Key Directories and Files
+### Key Directories and Files`
 - **`media/tag`**: Contains JSON files with information about images.
 - **`media/image`**: Contains image files.
 - **`recommend_model`**: Includes the recommendation model implementation.

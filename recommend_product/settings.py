@@ -4,7 +4,8 @@ import logging
 
 logging.basicConfig(level=logging.DEBUG)
 
-
+logging.getLogger('matplotlib').setLevel(logging.WARNING)
+logging.getLogger('h5py').setLevel(logging.WARNING)
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -27,9 +28,13 @@ STATICFILES_DIRS = [
 ]
 
 MEDIA_URL = 'media/'
+MODELS_DIR = os.path.join(BASE_DIR, 'models')
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 LOGIN_REDIRECT_URL = '/'
 DATA_UPLOAD_MAX_MEMORY_SIZE = 10485760 
+
+
+
 # Application definition
 INSTALLED_APPS = [
     "django.contrib.admin",
@@ -51,7 +56,7 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-ROOT_URLCONF = "recomment_product.urls"
+ROOT_URLCONF = "recommend_product.urls"
 
 TEMPLATES = [
     {
@@ -71,7 +76,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = "recomment_product.wsgi.application"
+WSGI_APPLICATION = "recommend_product.wsgi.application"
 
 # Database configuration
 DATABASES = {

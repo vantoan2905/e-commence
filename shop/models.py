@@ -1,11 +1,19 @@
 
+import os
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '1' 
 
+import tensorflow as tf
 from django.db import models
 from django.core.validators import MinValueValidator, MaxValueValidator
 from django.contrib.auth.models import User
 from django.utils import timezone
+from tensorflow.keras.models import load_model
+from tensorflow.keras.preprocessing.image import load_img, img_to_array
+import pandas as pd
+import numpy as np
+from django.core.files.storage import default_storage
 
-# Mô hình Product
+
 class Product(models.Model):
     id = models.AutoField(primary_key=True)
     image = models.ImageField(default=None, null=True, blank=True)

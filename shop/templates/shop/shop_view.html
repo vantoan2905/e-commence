@@ -10,9 +10,9 @@
     <script src="{% static 'shop/shop_view.js' %}" defer></script>
     <script>
         function handleButtonClick() {
-            const searchValue = document.querySelector('.search-box').value;
+            const searchValue = document.querySelector('.search-box').value.trim();
 
-            if (!searchValue.trim()) {
+            if (!searchValue) {
                 alert('Please enter a search term.');
                 return;
             }
@@ -54,113 +54,156 @@
             });
         }
 
+        function handleButtonLoginClick() {
+            fetch("{% url 'login' %}", {
+                method: 'GET',
+                headers: {
+                    'X-CSRFToken': '{{ csrf_token }}',
+                },
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.logged_in) {
+                    const loginButton = document.querySelector('.button-select li:last-child a');
+                    loginButton.innerText = 'Logout';
+                    loginButton.setAttribute('href', '{% url "logout" %}');
+                } else {
+                    alert('Please log in to continue.');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('An error occurred while processing the login.');
+            });
+        }
+
         function handleFileUpload(event) {
             const file = event.target.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function (e) {
-                    const fileContent = e.target.result;
-        
-                    fetch("{% url 'upload_file' %}", {
-                        method: 'POST',
-                        headers: {
-                            'X-CSRFToken': '{{ csrf_token }}',
-                            'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify({ fileData: fileContent, fileName: file.name })
-                    })
-                    .then(response => response.json())
-                    .then(data => {
-                        if (data.status === 'success') {
-                            alert('File uploaded successfully!');
-                        } else {
-                            alert('Failed to upload file: ' + data.message);
-                        }
-                    })
-                    .catch(error => {
-                        console.error('Error:', error);
-                        alert('Failed to upload file.');
-                    });
-                };
-                reader.readAsDataURL(file); 
-            } else {
+            if (!file) {
                 alert('No file selected.');
+                return;
             }
+
+            if (!['image/png', 'image/jpeg'].includes(file.type)) {
+                alert('Invalid file format. Please upload a PNG or JPG file.');
+                return;
+            }
+
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                const fileContent = e.target.result;
+
+                fetch("{% url 'upload_file' %}", {
+                    method: 'POST',
+                    headers: {
+                        'X-CSRFToken': '{{ csrf_token }}',
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ fileData: fileContent, fileName: file.name })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    const productContainer = document.querySelector('.product-container');
+                    productContainer.innerHTML = '';
+    
+                    if (data.products.length === 0) {
+                        productContainer.innerHTML = '<p>No products found.</p>';
+                        return;
+                    }
+    
+                    data.products.forEach(product => {
+                        const productItem = `
+                            <div class="product-item">
+                                <img src="${product.image}" alt="${product.name}">
+                                <div class="product-details">
+                                    <h2>${product.name}</h2>
+                                    <p>Price: $${product.price}</p>
+                                </div>
+                            </div>
+                        `;
+                        productContainer.innerHTML += productItem;
+                    });
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('Failed to upload file.');
+                });
+            };
+            reader.readAsDataURL(file);
+
+
         }
-        
+
+        function handlePagination(direction) {
+            fetch(`{% url 'paginate_products' %}?direction=${direction}`, {
+                method: 'GET',
+            })
+            .then(response => response.json())
+            .then(data => {
+                const productContainer = document.querySelector('.product-container');
+                productContainer.innerHTML = '';
+
+                if (data.products.length === 0) {
+                    productContainer.innerHTML = '<p>No products available.</p>';
+                    return;
+                }
+
+                data.products.forEach(product => {
+                    const productItem = `
+                        <div class="product-item">
+                            <img src="${product.image}" alt="${product.name}">
+                            <div class="product-details">
+                                <h2>${product.name}</h2>
+                                <p>Price: $${product.price}</p>
+                            </div>
+                        </div>
+                    `;
+                    productContainer.innerHTML += productItem;
+                });
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('An error occurred while fetching products.');
+            });
+        }
     </script>
 </head>
 <body>
-
 <nav>
     <div class="logo">
-        <a href="#">
-            <h1>Cow</h1>
-        </a>
+        <a href="#"><h1>Cow</h1></a>
     </div>
 
     <div class="search-container">
-        <button 
-            onclick="handleButtonClick()" 
-            class="filter-btn">
-            <ion-icon name="color-filter-outline"></ion-icon>
-        </button>
-        <input 
-            type="text" 
-            placeholder="Search products..." 
-            class="search-box">
-        <input 
-            type="file" 
-            id="fileInput" 
-            accept=".png,.jpg" 
-            style="display: none;" 
-            onchange="handleFileUpload(event)">
-        <button 
-            onclick="document.getElementById('fileInput').click();" 
-            class="upload-btn"><ion-icon name="cloud-upload-outline"></ion-icon>
-        </button>
+        <button onclick="handleButtonClick()" class="filter-btn"><ion-icon name="color-filter-outline"></ion-icon></button>
+        <input type="text" placeholder="Search products..." class="search-box">
+        <input type="file" id="fileInput" accept=".png,.jpg" style="display: none;" onchange="handleFileUpload(event)">
+        <button onclick="document.getElementById('fileInput').click();" class="upload-btn"><ion-icon name="cloud-upload-outline"></ion-icon></button>
     </div>
-
 
     <ul class="button-select">
         <li><a href="#">Pages</a><ion-icon name="copy-outline"></ion-icon></li>
         <li><a href="#">Buy Theme</a><ion-icon name="planet-outline"></ion-icon></li>
-        <li><a href="#">My Account</a>
-            <ion-icon name="person-circle-outline"></ion-icon>
-        </li>
-        
+        <li><a href="#" onclick="handleButtonLoginClick()">Login</a><ion-icon name="person-circle-outline"></ion-icon></li>
     </ul>
 </nav>
-
-
 
 <div class="product">
     <div class="product-container">
         {% if products %}
             {% for product in products %}
-            <div class="product-item">
-                <img src="{{ product.image.url }}" alt="{{ product.productDisplayName }}">
-                <div class="product-details">
-                    <h2>{{ product.productDisplayName }}</h2>
-                    <!-- <p>Article Number: {{ product.articleNumber }}</p> -->
-                    <!-- <p>Type: {{ product.articleType }}</p> -->
-                    <!-- <p>Category: {{ product.masterCategory }} > {{ product.subCategory }}</p> -->
-                    <!-- <p>Gender: {{ product.gender }}</p> -->
-                    <!-- <p>Colour: {{ product.baseColour }}</p> -->
-                    <!-- <p>Season: {{ product.season }} - Year: {{ product.year }}</p> -->
-                    <!-- <p>Usage: {{ product.usage }}</p> -->
-                    <div class="product-price">
-                        <span class="price">${{ product.price }}</span>
-                        <div>
-                            <ion-icon name="cart-outline"></ion-icon>
+                <div class="product-item">
+                    <img src="{{ product.image.url }}" alt="{{ product.productDisplayName }}">
+                    <div class="product-details">
+                        <h2>{{ product.productDisplayName }}</h2>
+                        <div class="product-price">
+                            <span class="price">${{ product.price }}</span>
+                            {% if product.on_sale %}
+                                <span class="sale-tag">Sale</span>
+                            {% endif %}
                         </div>
-                        
-                        {% if product.on_sale %}
-                        <span class="sale-tag">Sale</span>
-                        {% endif %}
                     </div>
                 </div>
-            </div>
             {% endfor %}
         {% else %}
             <p>No products available.</p>
@@ -169,11 +212,11 @@
 </div>
 
 <div class="pagination">
-    <button class="prev-page">Previous</button>
-    <button class="next-page">Next</button>
+    <button class="prev-page" onclick="handlePagination('prev')">Previous</button>
+    <button class="next-page" onclick="handlePagination('next')">Next</button>
 </div>
+
 <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-
 </body>
 </html>
