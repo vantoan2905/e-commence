@@ -1,3 +1,10 @@
+"""
+    Code by: Nguyen Van Toan
+    GitHub: https://github.com/vantoan2905
+    Email: toanvippk115@gmail.com
+
+""" 
+
 from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing.image import img_to_array, load_img
 from PIL import Image
@@ -16,6 +23,17 @@ class ImageClassifier:
 
     @staticmethod
     def image_classifier(file_path, model, label_mapping):
+        """
+        Classify an image using a pre-trained model.
+
+        Args:
+            file_path (str): Path to the image file.
+            model (str): Path to the pre-trained model.
+            label_mapping (str): Path to the label mapping CSV file.
+
+        Returns:
+            str: The predicted class name or 'Unknown' if an error occurs.
+        """
         try:
             model = tf.keras.models.load_model(model)
 

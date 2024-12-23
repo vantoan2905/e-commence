@@ -56,7 +56,7 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-ROOT_URLCONF = "recommend_product.urls"
+ROOT_URLCONF = "e_commerce.urls"
 
 TEMPLATES = [
     {
@@ -76,7 +76,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = "recommend_product.wsgi.application"
+WSGI_APPLICATION = "e_commerce.wsgi.application"
 
 # Database configuration
 DATABASES = {

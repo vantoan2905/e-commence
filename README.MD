@@ -1,12 +1,27 @@
+
+
+# Author
+```
+    Code by: Nguyen Van Toan
+    GitHub: https://github.com/vantoan2905
+    Email: toanvippk115@gmail.com
+```
+
 # Django Project README
 ![Image](image.png)
 
 ## Project Overview
-This project is a Django-based application designed for managing and recommending products on an e-commerce website. It includes functionality for storing and processing search and product selection history, managing media files, and utilizing a recommendation model.
+**Task:**
+- Build an e-commerce website.
+- Design and develop the back-end and front-end of an e-commerce website using Django.
+- Simulate customer data such as search history, clicks, ratings, and time spent on product pages.
+- Pre-process product and user data.
+- Develop a model for task classification (image, text) using TensorFlow (MobileNetV2), and deploy the model for an image-based product search function. 
+- Apply Large Language Models (LLM) to develop a chatbot system. (update)
 
 ## Directory Structure
 ```
-(django_recommend_system) /recommend_product/shop>
+(django_e-commence_system) /e-commence/
 ├── admin.py
 ├── apps.py
 ├── models.py
@@ -17,7 +32,6 @@ This project is a Django-based application designed for managing and recommendin
 │   ├── tag
 │   └── image
 ├── migrations
-├── recommend_model
 ├── static
 │   ├── models
 │   └── shop
@@ -25,7 +39,7 @@ This project is a Django-based application designed for managing and recommendin
 └── 
 ```
 
-### Key Directories and Files`
+### Key Directories and Files
 - **`media/tag`**: Contains JSON files with information about images.
 - **`media/image`**: Contains image files.
 - **`recommend_model`**: Includes the recommendation model implementation.
@@ -43,7 +57,7 @@ This project is a Django-based application designed for managing and recommendin
 
 1. **Clone the Repository**
    ```bash
-   git clone https://github.com/vantoan2905/recommend_product.git
+   git clone https://github.com/vantoan2905/e-commence.git
    cd recommend_product
    ```
 
@@ -98,9 +112,4 @@ This project is licensed under the [MIT License](LICENSE).
 ## Contact
 For inquiries or support, contact Nguyen Van Toan at [toanvippk115@gmail.com].
 
-"""
-    Code by: Nguyen Van Toan
-    GitHub: https://github.com/vantoan2905
-    Email: toanvippk115@gmail.com
 
-""" 
