@@ -19,8 +19,10 @@ This project is a Django-based application designed for managing and recommendin
 ├── migrations
 ├── recommend_model
 ├── static
+│   ├── models
+│   └── shop
 ├── templates
-└── __pycache__
+└── 
 ```
 
 ### Key Directories and Files`
@@ -60,6 +62,7 @@ This project is a Django-based application designed for managing and recommendin
    Ensure the `load_data` command is implemented under `shop/management/commands/load_data.py`.
    ```bash
    python manage.py load_data
+   python manage.py render_User
    ```
 
 5. **Run the Development Server**
@@ -95,3 +98,9 @@ This project is licensed under the [MIT License](LICENSE).
 ## Contact
 For inquiries or support, contact Nguyen Van Toan at [toanvippk115@gmail.com].
 
+"""
+    Code by: Nguyen Van Toan
+    GitHub: https://github.com/vantoan2905
+    Email: toanvippk115@gmail.com
+
+""" 

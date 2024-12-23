@@ -1,4 +1,9 @@
+"""
+    Code by: Nguyen Van Toan
+    GitHub: https://github.com/vantoan2905
+    Email: toanvippk115@gmail.com
 
+""" 
 import os
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '1' 
 

@@ -1,3 +1,11 @@
+"""
+    Code by: Nguyen Van Toan
+    GitHub: https://github.com/vantoan2905
+    Email: toanvippk115@gmail.com
+
+""" 
+
+
 from django.contrib import admin
 from .models import Product
 

@@ -1,3 +1,12 @@
+"""
+    Code by: Nguyen Van Toan
+    GitHub: https://github.com/vantoan2905
+    Email: toanvippk115@gmail.com
+
+""" 
+
+
+
 from django.shortcuts import render, redirect
 from django.http import JsonResponse
 from django.contrib.auth import logout, authenticate, login
@@ -70,6 +79,7 @@ def login_view(request):
 def search_products_by_image(request):
     if request.method == 'POST':
         try:
+            # Process the uploaded file
             data = json.loads(request.body)
             file_data = data.get('fileData')
             file_name = data.get('fileName', 'uploaded_file.jpg')
@@ -85,10 +95,12 @@ def search_products_by_image(request):
             with open(file_path, 'wb') as f:
                 f.write(file_content)
 
+            
+            # Load the image classifier model
             model_path = os.path.join(settings.BASE_DIR, 'static/models/articleType_final.keras')
             label_mapping_path = os.path.join(settings.BASE_DIR, 'static/models/articleType.csv')
 
-
+            # ImageClassifier 
             result = ImageClassifier.image_classifier(file_path=file_path,
                                                       model=model_path,
                                                       label_mapping=label_mapping_path)
@@ -97,6 +109,8 @@ def search_products_by_image(request):
                 return JsonResponse({'status': 'error', 'message': 'Failed to classify image.'})
 
             products = Product.objects.filter(productDisplayName__icontains=result)
+
+            # Search for products by classification result
             product_list = [
                 {'name': product.productDisplayName, 'price': product.price, 'image': product.image.url}
                 for product in products[:32]
