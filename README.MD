@@ -110,6 +110,7 @@ Loads initial data into the database. Implemented as a custom management command
 This project is licensed under the [MIT License](LICENSE).
 
 ## Contact
-For inquiries or support, contact Nguyen Van Toan at [toanvippk115@gmail.com].
+For inquiries or support, contact Backend Nguyen Van Toan at [toanvippk115@gmail.com].
 
+For inquiries or support, contact Fontend Duc Thanh at [tika303103@gmail.com].
 
