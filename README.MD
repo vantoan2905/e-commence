@@ -3,8 +3,11 @@
 # Author
 ```
     Code by: Nguyen Van Toan
+             Duc Thanh
     GitHub: https://github.com/vantoan2905
+            https://github.com/duc-thanh-2303
     Email: toanvippk115@gmail.com
+           tika303103@gmail.com
 ```
 
 # Django Project README
